@@ -1,0 +1,24 @@
+<div class="chat-container">
+  <div class="chat-body">
+    @for(msg of messages; track msg) {
+    <div>
+      @if(msg.role === 'user'){
+      <strong [ngClass]="msg.role">You:</strong>
+      }
+      @if(msg.role === 'bot'){
+      <strong [ngClass]="msg.role">Bot:</strong>
+      }
+      <app-markdown [markdown]="msg.content.toString()"></app-markdown>
+    </div>
+    }
+
+    @if(loading){
+    <div class="loading">Bot is thinking...</div>
+    }
+  </div>
+
+  <div class="input-area">
+    <input [(ngModel)]="userInput" (keyup.enter)="sendMessage()" placeholder="Type your message..." />
+    <button (click)="sendMessage()">Send</button>
+  </div>
+</div>
