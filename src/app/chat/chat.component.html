@@ -1,4 +1,9 @@
 <div class="chat-container">
+  <div class="input-area">
+    <input [(ngModel)]="userInput" (keyup.enter)="sendMessage()" placeholder="Type your message..." />
+    <button (click)="sendMessage()">Send</button>
+  </div>
+
   <div class="chat-body">
     @for(msg of messages; track msg) {
     <div>
@@ -15,10 +20,5 @@
     @if(loading){
     <div class="loading">Bot is thinking...</div>
     }
-  </div>
-
-  <div class="input-area">
-    <input [(ngModel)]="userInput" (keyup.enter)="sendMessage()" placeholder="Type your message..." />
-    <button (click)="sendMessage()">Send</button>
   </div>
 </div>
